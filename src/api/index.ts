@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 const ENDPOINTS = {
-  BASE_URL: 'https://dummyjson.com/products',
+  BASE_URL: import.meta.env.API_URL || 'https://dummyjson.com/products',
 };
 
 const homepageUrl = async (): Promise<AxiosResponse> => {

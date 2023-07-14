@@ -10,7 +10,7 @@ import {
 } from '../utils/types';
 import { decryptPassword, encryptPassword } from '../utils';
 import { homepageUrl, productPageUrl } from '../api';
-import { MESSAGES } from '../utils/contants';
+import { MESSAGES } from '../utils/constants';
 
 const stateContext = createContext<dataProviderProps | null>(null);
 
@@ -41,9 +41,9 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
 
   const fetchProducts = async (): Promise<void> => {
     try {
-      const response = await homepageUrl();
-      setProductData(response.data.products);
-      setTotalPages(Math.ceil(response.data.products.length / 8));
+      const { data } = await homepageUrl();
+      setProductData(data.products);
+      setTotalPages(Math.ceil(data.products.length / 8));
     } catch (error) {
       console.error('Error fetching products:', error);
     }
@@ -57,10 +57,16 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
 
   const fetchSingleProduct = async (id: number) => {
     try {
-      const response = await productPageUrl(id);
-      setSingleProduct(response.data);
+      const { data } = await productPageUrl(id);
+      setSingleProduct(data);
     } catch (error) {
       console.error('Error fetching single product:', error);
+      toast({
+        title: MESSAGES.ProductFetchFailed,
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      })
     }
   };
 

@@ -19,7 +19,7 @@ import { Formik, Form, Field } from 'formik';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { decryptPassword } from '../../utils';
 import { LoginSchema } from '../../utils/validations';
-import { MESSAGES } from '../../utils/contants';
+import { MESSAGES } from '../../utils/constants';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);

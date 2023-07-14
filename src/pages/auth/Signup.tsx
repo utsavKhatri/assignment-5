@@ -20,7 +20,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { encryptPassword } from '../../utils';
 import { SignupSchema } from '../../utils/validations';
-import { MESSAGES } from '../../utils/contants';
+import { MESSAGES } from '../../utils/constants';
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState<boolean>(false);

@@ -17,7 +17,7 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { DataState } from '../context';
 import { dataProviderProps } from '../utils/types';
-import { MESSAGES } from '../utils/contants';
+import { MESSAGES } from '../utils/constants';
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();

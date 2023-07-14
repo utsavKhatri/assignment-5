@@ -11,4 +11,5 @@ export const MESSAGES = {
   PasswordChnagedFailed: 'Password Change Failed',
   LogoutSuccess: 'Logged Out',
   LogoutFailed: 'Logout Failed',
+  ProductFetchFailed: 'Product Fetch Failed',
 }
