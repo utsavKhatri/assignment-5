@@ -32,7 +32,6 @@ export default function Signup() {
     lastName: string;
     mobileNumber: string;
   }) => {
-    // Check if email already exists in local storage
     const usersData = JSON.parse(localStorage.getItem('users') || '[]');
     const existingUser = usersData.find(
       (user: { email: string }) => user.email === values.email
@@ -47,10 +46,8 @@ export default function Signup() {
       return;
     }
 
-    // Encrypt the password (You can use any encryption method here)
     const encryptedPassword = encryptPassword(values.password);
 
-    // Save user data in local storage
     const newUser = {
       firstName: values.firstName,
       lastName: values.lastName,
@@ -61,7 +58,6 @@ export default function Signup() {
     usersData.push(newUser);
     localStorage.setItem('users', JSON.stringify(usersData));
 
-    // Perform any additional actions or redirect to another page
     toast({
       title: 'User registered',
       status: 'success',

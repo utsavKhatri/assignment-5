@@ -43,7 +43,6 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
       const response = await axios.get(
         'https://dummyjson.com/products?limit=100'
       );
-      console.log(response.data);
 
       setProductData(response.data.products);
       setTotalPages(Math.ceil(response.data.products.length / 8));
@@ -69,7 +68,6 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
   const fetchSingleProduct = async (id: number) => {
     try {
       const response = await axios.get(`https://dummyjson.com/products/${id}`);
-      console.log(response.data);
       setSingleProduct(response.data);
     } catch (error) {
       console.error('Error fetching single product:', error);

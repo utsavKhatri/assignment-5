@@ -28,7 +28,6 @@ export default function Product() {
     DataState() as dataProviderProps;
   const router = useNavigate();
   useEffect(() => {
-    console.log(params);
     if (params.id) {
       fetchSingleProduct(parseInt(params.id));
     } else {
