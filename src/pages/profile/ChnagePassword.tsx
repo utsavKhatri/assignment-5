@@ -22,7 +22,7 @@ import { ChangePasswordSchema } from '../../utils/validations';
 const ChnagePassword = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const { handleChnagePassword } = DataState() as dataProviderProps;
-
+  
   return (
     <>
       <Navbar />

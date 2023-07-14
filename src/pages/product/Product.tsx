@@ -29,7 +29,14 @@ export default function Product() {
   const router = useNavigate();
   useEffect(() => {
     if (params.id) {
-      fetchSingleProduct(parseInt(params.id));
+      if (
+        localStorage.getItem('currentUser') !== null &&
+        localStorage.getItem('currentUser') !== undefined
+      ) {
+        fetchSingleProduct(parseInt(params.id));
+      } else {
+        router('/');
+      }
     } else {
       router('/');
     }

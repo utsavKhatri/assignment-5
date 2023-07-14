@@ -8,7 +8,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import Navbar from '../../components/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import EditProfile from '../../components/EditProfile';
 import { DataState } from '../../context';
@@ -16,9 +16,17 @@ import { dataProviderProps } from '../../utils/types';
 
 const Profile = () => {
   const { userProfile, fetchCurrentUser } = DataState() as dataProviderProps;
+  const router = useNavigate();
   useEffect(() => {
-    fetchCurrentUser();
-  }, [fetchCurrentUser]);
+    if (
+      localStorage.getItem('currentUser') !== null &&
+      localStorage.getItem('currentUser') !== undefined
+    ) {
+      fetchCurrentUser();
+    } else {
+      router('/');
+    }
+  }, [fetchCurrentUser, router]);
 
   return (
     <>
