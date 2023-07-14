@@ -5,7 +5,6 @@ export type dataProviderProps = {
   currentPage?: number;
   totalPages?: number;
   fetchProducts?: () => void;
-  handlePrevPage?: () => void;
   handleNextPage?: () => void;
   paginatedProducts?: object[] | undefined;
   setCurrentPage: Dispatch<SetStateAction<number>>;

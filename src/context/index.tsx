@@ -11,6 +11,7 @@ import {
 } from '../utils/types';
 import { decryptPassword, encryptPassword } from '../utils';
 
+
 const stateContext = createContext<dataProviderProps | null>(null);
 
 const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
@@ -56,14 +57,6 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
     const endIndex = startIndex + 8;
     return productData?.slice(startIndex, endIndex);
   }, [currentPage, productData]);
-
-  const handlePrevPage = (): void => {
-    setCurrentPage((prevPage) => prevPage - 1);
-  };
-
-  const handleNextPage = (): void => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
 
   const fetchSingleProduct = async (id: number) => {
     try {
@@ -175,8 +168,6 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
     <stateContext.Provider
       value={{
         productData,
-        handleNextPage,
-        handlePrevPage,
         totalPages,
         fetchProducts,
         currentPage,
