@@ -19,6 +19,7 @@ import { Formik, Form, Field } from 'formik';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { decryptPassword } from '../../utils';
 import { LoginSchema } from '../../utils/validations';
+import { MESSAGES } from '../../utils/contants';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -36,7 +37,7 @@ const Login = () => {
       if (decryptedPassword === values.password) {
         localStorage.setItem('currentUser', JSON.stringify(existingUser));
         toast({
-          title: 'Login Successful',
+          title: MESSAGES.LoginSuccess,
           status: 'success',
           duration: 4000,
           isClosable: true,
@@ -45,14 +46,14 @@ const Login = () => {
         return;
       }
       toast({
-        title: 'Password Incorrect',
+        title: MESSAGES.PasswordIncorrect,
         status: 'error',
         duration: 4000,
         isClosable: true,
       });
     } else {
       toast({
-        title: 'Login Failed',
+        title: MESSAGES.LoginFailed,
         status: 'error',
         duration: 4000,
         isClosable: true,

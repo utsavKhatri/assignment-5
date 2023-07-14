@@ -19,7 +19,7 @@ import { DataState } from '../../context';
 import { dataProviderProps } from '../../utils/types';
 import { ChangePasswordSchema } from '../../utils/validations';
 
-const ChnagePassword = () => {
+const ChangePassword = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const { handleChnagePassword } = DataState() as dataProviderProps;
   
@@ -155,4 +155,4 @@ const ChnagePassword = () => {
   );
 };
 
-export default ChnagePassword;
+export default ChangePassword;

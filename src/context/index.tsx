@@ -1,6 +1,5 @@
 import { useColorMode, useToast } from '@chakra-ui/react';
 import { createTheme } from '@mui/material';
-import axios from 'axios';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import {
   DataProviderProps,
@@ -10,7 +9,8 @@ import {
   dataProviderProps,
 } from '../utils/types';
 import { decryptPassword, encryptPassword } from '../utils';
-
+import { homepageUrl, productPageUrl } from '../api';
+import { MESSAGES } from '../utils/contants';
 
 const stateContext = createContext<dataProviderProps | null>(null);
 
@@ -41,10 +41,7 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
 
   const fetchProducts = async (): Promise<void> => {
     try {
-      const response = await axios.get(
-        'https://dummyjson.com/products?limit=100'
-      );
-
+      const response = await homepageUrl();
       setProductData(response.data.products);
       setTotalPages(Math.ceil(response.data.products.length / 8));
     } catch (error) {
@@ -60,7 +57,7 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
 
   const fetchSingleProduct = async (id: number) => {
     try {
-      const response = await axios.get(`https://dummyjson.com/products/${id}`);
+      const response = await productPageUrl(id);
       setSingleProduct(response.data);
     } catch (error) {
       console.error('Error fetching single product:', error);
@@ -93,7 +90,7 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
       );
       setUserProfile(usersData[existingUserIndex]);
       toast({
-        title: 'Profile Updated',
+        title: MESSAGES.ProfileUpdateSuccess,
         status: 'success',
         duration: 4000,
         isClosable: true,
@@ -101,7 +98,7 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
       onClose();
     } else {
       toast({
-        title: 'Profile Update Failed',
+        title: MESSAGES.ProfileUpdateFailed,
         status: 'error',
         duration: 4000,
         isClosable: true,
@@ -141,14 +138,14 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
           setUserProfile(usersData[existingUserIndex]);
 
           toast({
-            title: 'Password Changed Successfully',
+            title: MESSAGES.PasswordChnaged,
             status: 'success',
             duration: 4000,
             isClosable: true,
           });
         }
         toast({
-          title: 'Password Incorrect',
+          title: MESSAGES.PasswordIncorrect,
           status: 'error',
           duration: 4000,
           isClosable: true,
@@ -156,7 +153,7 @@ const DataProvider = ({ children }: DataProviderProps): JSX.Element => {
       }
     } else {
       toast({
-        title: 'Change Password Failed',
+        title: MESSAGES.PasswordChnagedFailed,
         status: 'error',
         duration: 4000,
         isClosable: true,

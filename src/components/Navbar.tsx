@@ -17,6 +17,7 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { DataState } from '../context';
 import { dataProviderProps } from '../utils/types';
+import { MESSAGES } from '../utils/contants';
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -27,7 +28,7 @@ const Navbar = () => {
     localStorage.removeItem('currentUser');
     setUserProfile(undefined);
     toast({
-      title: 'Logged Out',
+      title: MESSAGES.LoginSuccess,
       status: 'success',
       duration: 4000,
       isClosable: true,

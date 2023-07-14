@@ -8,7 +8,7 @@ import Signup from './pages/auth/Signup.tsx';
 import { ChakraProvider } from '@chakra-ui/react';
 import DataProvider from './context/index.tsx';
 import Product from './pages/product/Product.tsx';
-import ChnagePassword from './pages/profile/ChnagePassword.tsx';
+import ChangePassword from './pages/profile/ChangePassword.tsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/change-password',
-    element: <ChnagePassword />,
+    element: <ChangePassword />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

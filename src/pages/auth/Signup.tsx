@@ -20,6 +20,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { encryptPassword } from '../../utils';
 import { SignupSchema } from '../../utils/validations';
+import { MESSAGES } from '../../utils/contants';
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -38,7 +39,7 @@ export default function Signup() {
     );
     if (existingUser) {
       toast({
-        title: 'Email already exists',
+        title: MESSAGES.EmailExists,
         status: 'error',
         duration: 4000,
         isClosable: true,
@@ -59,7 +60,7 @@ export default function Signup() {
     localStorage.setItem('users', JSON.stringify(usersData));
 
     toast({
-      title: 'User registered',
+      title: MESSAGES.SignupSuccess,
       status: 'success',
       duration: 4000,
       isClosable: true,

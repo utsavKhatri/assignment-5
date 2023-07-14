@@ -27,7 +27,12 @@ export const SignupSchema = Yup.object().shape({
         message: 'Password is too weak',
       }
     ),
-  mobileNumber: Yup.string(),
+  mobileNumber: Yup.string().matches(
+    /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+    {
+      message: 'Invalid mobile number',
+    }
+  ),
   confirmPassword: Yup.string().oneOf(
     [Yup.ref('password')],
     'Passwords must match'
